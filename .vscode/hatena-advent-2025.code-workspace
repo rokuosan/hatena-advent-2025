@@ -1,0 +1,41 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "wrangler.json": "jsonc",
+      "*.css": "tailwindcss"
+    },
+    "editor.codeActionsOnSave": {
+      "source.fixAll.biome": "explicit",
+      "source.organizeImports.biome": "explicit",
+      "source.action.useSortedProperties.biome": "explicit"
+    },
+    "[javascript]": {
+      "editor.tabSize": 2,
+      "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[javascriptreact]": {
+      "editor.tabSize": 2,
+      "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[typescript]": {
+      "editor.tabSize": 2,
+      "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[typescriptreact]": {
+      "editor.tabSize": 2,
+      "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[css]": {
+      "editor.tabSize": 2,
+      "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[yaml]": {
+      "editor.tabSize": 2
+    }
+  }
+}

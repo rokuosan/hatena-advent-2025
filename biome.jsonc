@@ -1,0 +1,58 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.3.11/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    // For --changed flasg; e.g. biome check --changed
+    "defaultBranch": "master"
+  },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/.wrangler",
+      "!worker-configuration.d.ts",
+      "!cloudflare-env.d.ts",
+      "!**/package-lock.json"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "lineWidth": 80,
+    "indentWidth": 2
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    },
+    "domains": {
+      "next": "recommended"
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double"
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedProperties": "on"
+      }
+    }
+  },
+  "css": {
+    "linter": {
+      "enabled": false
+    },
+    "parser": {
+      "tailwindDirectives": true
+    }
+  }
+}
