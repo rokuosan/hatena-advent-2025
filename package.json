@@ -14,11 +14,11 @@
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.14.4",
-    "next": "15.5.9",
-    "react": "19.1.4",
-    "react-dom": "19.1.4",
     "hono": "^4.11.3",
-    "node-vibrant": "^4.0.3"
+    "next": "15.5.9",
+    "node-vibrant": "^4.0.3",
+    "react": "19.1.4",
+    "react-dom": "19.1.4"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.11",
@@ -27,6 +27,7 @@
     "@types/node": "^20.19.27",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vibrant/color": "^4.0.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "wrangler": "^4.57.0"
