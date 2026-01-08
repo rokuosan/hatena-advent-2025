@@ -1,45 +1,32 @@
 "use client";
+import type { Palette } from "@vibrant/color";
+import Image from "next/image";
 import { Vibrant } from "node-vibrant/browser";
 import { useEffect, useState } from "react";
 
 export const ImageLoader = () => {
-  const [swatches, setSwatches] = useState<Array<{
-    name: string;
-    hex: string;
-  }> | null>(null);
+  const [palette, setPalette] = useState<Palette | null>(null);
   const src = "https://avatars.githubusercontent.com/u/85651386?v=4";
-  const keys = [
-    "Vibrant",
-    "Muted",
-    "DarkVibrant",
-    "DarkMuted",
-    "LightVibrant",
-    "LightMuted",
-  ] as const;
 
   useEffect(() => {
     const extract = async () => {
       const vibrant = new Vibrant(src);
       const palette = await vibrant.getPalette();
-      const list: Array<{ name: string; hex: string }> = [];
-      const p = palette;
-      for (const k of keys) {
-        const hex = p[k]?.hex;
-        if (hex) list.push({ name: k, hex });
-      }
-      setSwatches(list);
+      console.log(palette);
+      setPalette(palette);
     };
     extract();
-  }, [keys]);
+  }, []);
 
   return (
     <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
       <div>
         <p>Original</p>
-        {/** biome-ignore lint/performance/noImgElement: <img> is used for demonstration purposes */}
-        <img
+        <Image
           src={src}
           alt="original"
+          width={160}
+          height={160}
           style={{ width: "160px", height: "160px", objectFit: "cover" }}
           crossOrigin="anonymous"
         />
@@ -51,23 +38,38 @@ export const ImageLoader = () => {
           gap: "12px",
         }}
       >
-        {swatches ? (
-          swatches.map(({ name, hex }) => (
-            <div key={name}>
-              <p style={{ margin: 0 }}>
-                {name}: {hex}
-              </p>
-              <div
-                style={{
-                  width: "160px",
-                  height: "160px",
-                  backgroundColor: hex,
-                  border: "1px solid #ddd",
-                }}
-              />
-            </div>
+        {palette ? (
+          Object.entries(palette).map(([name, swatch]) =>
+            swatch ? (
+              <div key={name} style={{ textAlign: "center" }}>
+                <div
+                  style={{
+                    width: "160px",
+                    height: "160px",
+                    backgroundColor: swatch.hex,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: swatch.titleTextColor,
+                    fontWeight: "bold",
+                    fontFamily: "sans-serif",
+                  }}
+                >
+                  {name}
+                </div>
+                <p
+                  style={{
+                    marginTop: "8px",
+                    fontFamily: "sans-serif",
+                    fontSize: "14px",
+                  }}
+                >
+                  {swatch.hex}
+                </p>
+              </div>
+            ) : null
           ))
-        ) : (
+        : (
           <p>Loading palette...</p>
         )}
       </div>
